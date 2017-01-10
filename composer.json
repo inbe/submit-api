@@ -1,7 +1,7 @@
 {
-    "name": "francescomalatesta/laravel-api-boilerplate-jwt",
-    "description": "An API Boilerplate to create a ready-to-use REST API in seconds.",
-    "keywords": ["laravel", "api", "boilerplate", "jwt"],
+    "name": "inbe/submit-api",
+    "description": "An simple REST API handling issues, tags and votes.",
+    "keywords": ["laravel", "api", "issue", "handler"],
     "license": "MIT",
     "type": "project",
     "require": {
