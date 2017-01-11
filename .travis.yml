@@ -23,5 +23,6 @@ script:
 deploy:
   provider: heroku
   app: submit-api
-  api_key: heroku-api
+  api_key: 
+    secure: heroku-api
   strategy: git
