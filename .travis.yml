@@ -4,7 +4,6 @@ php:
   - 7.1
 
 before_script:
-  - mkdir bootstrap/cache
   - cp .env.travis .env
   - mysql -e 'create database submit-api;'
   - composer self-update
