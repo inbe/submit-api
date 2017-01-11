@@ -23,6 +23,5 @@ script:
 deploy:
   provider: heroku
   app: submit-api
-  api_key: 
-    secure: heroku-api
+  api_key: 65cb226b-fedf-4ca8-8b5a-1954470903f6
   strategy: git
