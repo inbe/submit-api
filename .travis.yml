@@ -1,0 +1,16 @@
+language: php
+
+php:
+  - 7.1
+
+before_script:
+  - mkdir bootstrap/cache
+  - cp .env.travis .env
+  - mysql -e 'create database submit-api;'
+  - composer self-update
+  - composer install --no-interaction
+  - php artisan key:generate
+  - php artisan jwt:generate
+
+script:
+  - vendor/bin/phpunit
