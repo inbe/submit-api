@@ -6,6 +6,9 @@ php:
 addons:
   mariadb: '10.0'
 
+env:
+  - TRAVIS_SECURE_ENV_VARS=true
+
 before_script:
   - cp .env.travis .env
   - mysql -e 'CREATE DATABASE submit_api;'
