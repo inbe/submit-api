@@ -17,7 +17,7 @@ class CreateVotesTable extends Migration
             $table->increments('id');
             $table->integer('issue_id')->index()->unsigned();
             $table->integer('user_id')->index()->unsigned();
-            $table->timestamp('created_at');
+            $table->timestamps();
             $table->foreign('issue_id')->references('id')->on('issues')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('user_id')->references('id')->on('users')
