@@ -1,11 +1,19 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Api\V1\Controllers;
 
+use JWTAuth;
+use App\Tag;
+use Dingo\Api\Routing\Helpers;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class TagsController extends Controller
 {
+
+    use Helpers;
+
     /**
      * Display a listing of the resource.
      *
@@ -13,17 +21,9 @@ class TagsController extends Controller
      */
     public function index()
     {
-        //
-    }
+      $tags = \App\Tag::all();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+      return $tags->toArray();;
     }
 
     /**
@@ -34,7 +34,13 @@ class TagsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $tag = new Tag;
+      $tag->name = $request->get('name');
+
+      if($tag->save())
+          return $this->response->created();
+      else
+          return $this->response->error('could_not_create_tag', 500);
     }
 
     /**
@@ -45,40 +51,10 @@ class TagsController extends Controller
      */
     public function show($id)
     {
-        //
-    }
+        $tag = \App\Tag::find($id);
+        if(!$tag)
+            throw new NotFoundHttpException;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return $tag;
     }
 }
