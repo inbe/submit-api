@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use \App\User;
 
-class DatabaseSeeder extends Seeder
+class UsersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,7 +12,6 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(UsersSeeder::class);
-        $this->call(TagsSeeder::class);
+        $user = User::create(['name' => 'testuser', 'email' => 'test@example.com', 'password' => 'test']);
     }
 }
