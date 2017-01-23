@@ -14,11 +14,11 @@ class CreateIssueTagTable extends Migration
     public function up()
     {
         Schema::create('issue_tag', function (Blueprint $table) {
-            $table->foreign('issue_id')->references('id')->on('issue')
+            $table->foreign('issue_id')->references('id')->on('issues')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('tag_id')->references('id')->on('tag')
+            $table->foreign('tag_id')->references('id')->on('tags')
                 ->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('user')
+            $table->foreign('user_id')->references('id')->on('users')
                 ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
