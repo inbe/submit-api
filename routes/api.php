@@ -32,7 +32,12 @@ $api->version('v1', function (Router $api) {
     });
     // tags
     $api->get('tags', 'App\\Api\\V1\\Controllers\\TagsController@index');
-    $api->get('tags/{id}', 'App\\Api\\V1\\Controllers\\TagsController@show');
+    $api->post('tags', 'App\\Api\\V1\\Controllers\\TagsController@store');
+    $api->get('tags/{id}', 'App\\Api\\V1\\Controllers\\TagsController@show')->where('id', '[0-9]+');
+    $api->get('issues', 'App\\Api\\V1\\Controllers\\IssuesController@index');
+    $api->post('issues', 'App\\Api\\V1\\Controllers\\IssuesController@store');
+    $api->get('issues/{id}', 'App\\Api\\V1\\Controllers\\IssuesController@show')->where('id', '[0-9]+');
+    $api->put('issues/{id}', 'App\\Api\\V1\\Controllers\\IssuesController@update')->where('id', '[0-9]+');
     $api->get('hello', function() {
         return response()->json([
             'message' => 'This is a simple example of item returned by your APIs. Everyone can see it.'
