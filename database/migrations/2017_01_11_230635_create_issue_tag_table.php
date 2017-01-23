@@ -14,7 +14,12 @@ class CreateIssueTagTable extends Migration
     public function up()
     {
         Schema::create('issue_tag', function (Blueprint $table) {
-            $table->increments('id');
+            $table->foreign('issue_id')->references('id')->on('issue')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('tag_id')->references('id')->on('tag')
+                ->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('user')
+                ->onUpdate('cascade')->onDelete('cascade');
             $table->timestamps();
         });
     }
